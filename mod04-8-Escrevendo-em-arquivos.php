@@ -37,7 +37,7 @@ mod04-8-Escrevendo-em-arquivos.php
     mod04-8-new.html
     mod04-8-escrevendo.php
 
-mod04-9-Exercicio-Pratico-(Cadastro-com-txt).php
+mod04-9-Exercicio.php
 mod04-10-Excluindo-arquivos.php
 mod04-11-Movendo-arquivos.php
 mod04-12-Upload-de-arquivos-(1/2).php
