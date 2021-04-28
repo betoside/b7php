@@ -67,12 +67,48 @@ echo "</pre>";
             mod07-23-SOLID-L-Princ-da-Substituicao-de-Liskov.php
         </a>
     </li>
-    <li>mod07-24-SOLID-I-Princ-da-Segregacao-da-Interface.php</li>
-    <li>mod07-25-SOLID-D-Princ-da-Inversão-da-Dependencia.php</li>
+    <li>
+        <a href="../mod07-24-SOLID-I-Princ-da-Segregacao-da-Interface.php">
+            mod07-24-SOLID-I-Princ-da-Segregacao-da-Interface.php
+        </a>
+    </li>
+    <li>
+        <a href="../mod07-25-SOLID-D-Princ-da-Inversão-da-Dependencia.php">
+            mod07-25-SOLID-D-Princ-da-Inversão-da-Dependencia.php
+        </a>
+    </li>
     
-    <li>mod07-26-Encriptacao-de-senhas.php</li>
-    <li>mod07-27-Manipulacao-de-imagens-com-GD.php</li>
-    <li>mod07-28-GD-Resize.php</li>
-    <li>mod07-29-GD-Crop.php</li>
+    <li>
+        <a href="../mod07-26-Encriptacao-de-senhas.php">
+            mod07-26-Encriptacao-de-senhas.php
+        </a>
+    </li>
+    <li>
+        <a href="../mod07-27-imagens-GD/index.php">
+            mod07-27-Manipulacao-de-imagens-com-GD.php
+        </a>
+    
+        <!-- 
+        mod07-27-Manipulacao-de-imagens-com-GD.php
+
+        mod07-27-Manipulacao-de-imagens-com-GD.php
+
+        mod07-27-imagens-GD
+
+        #27: Manipulação de imagens com GD
+
+         -->
+
+    </li>
+    <li>
+        <a href="../mod07-27-imagens-GD/mod07-28-GD-Resize.php">
+            mod07-28-GD-Resize.php
+        </a>
+    </li>
+    <li>
+        <a href="../mod07-27-imagens-GD/mod07-29-GD-Crop.php">
+            mod07-29-GD-Crop.php
+        </a>
+    </li>
     <li>mod07-30-Classe-DateTime.php</li>
 </ol>
