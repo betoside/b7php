@@ -110,5 +110,9 @@ echo "</pre>";
             mod07-29-GD-Crop.php
         </a>
     </li>
-    <li>mod07-30-Classe-DateTime.php</li>
+    <li>
+        <a href="../mod07-30-Classe-DateTime.php">
+            mod07-30-Classe-DateTime.php
+        </a>
+    </li>
 </ol>

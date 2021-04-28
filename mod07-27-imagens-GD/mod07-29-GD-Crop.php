@@ -19,8 +19,8 @@ $ratioDest = $width / $height;
 
 $finalWidth = 0;
 $finalHeight = 0;
-$finalX;
-$finalY;
+$finalX = 0;
+$finalY = 0;
 
 if ($ratioDest > $ratio) {
     $finalWidth = $height * $ratio;
