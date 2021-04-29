@@ -3,7 +3,7 @@ echo 'mod06-15-PSR.php';
 echo "<br>";
 echo "<br>";
 
-echo 'PHP Standards Recommendations'
+echo 'PHP Standards Recommendations';
 echo "<br>";
 echo '<a href="http://www.PHP-FIG.org/psr/">www.PHP-FIG.org/psr/</a>';
 
