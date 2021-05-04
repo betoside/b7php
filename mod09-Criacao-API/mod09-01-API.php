@@ -29,6 +29,7 @@
         </p>
     </li>
     <li>
+        <hr>
         <h2>2: Estrutura de uma API</h2>
         <br>
         <pre>
@@ -43,15 +44,16 @@
         - texto puro (sim, nao, 0, 1, ou seja, respostas muito simples funcionam bem com texto puro) 
         - XML
         - JSON
-        <p>
-            <a href="http://jsonviewer.stack.hu/" target='_blank'>http://jsonviewer.stack.hu/</a>
-            <br>
-            <a href="https://resttesttest.com/" target='_blank'>https://resttesttest.com/</a>
-        </p>
+    <p>
+        <a href="http://jsonviewer.stack.hu/" target='_blank'>http://jsonviewer.stack.hu/</a>
+        <br>
+        <a href="https://resttesttest.com/" target='_blank'>https://resttesttest.com/</a>
+    </p>
         </pre>
 
     </li>
     <li>
+        <hr>
         <h2>3: DevsNotes API: Planejamento</h2>
         <pre>
         DEVSNOTES: (sistema de anotações simples)
@@ -80,6 +82,7 @@
 
     </li>
     <li>
+        <hr>
         <h2>4: DevsNotes API: Banco de Dados</h2>
         <p>
             <strong>Banco de dados:</strong> devsnotes
@@ -94,6 +97,7 @@
         
     </li>
     <li>
+        <hr>
         <h2>5: DevsNotes API (estrutural): Introdução</h2>
         <p>
             API de forma fácil, simples e funcional
@@ -116,6 +120,7 @@
 
     </li>
     <li>
+        <hr>
         <h2>6: DevsNotes API (estrutural): Base</h2>
         <p>1ª coisa que aprendemos: criar um array para retornar algo: um JSON</p>
         <p>
@@ -125,14 +130,14 @@
             <br>
             <strong>Result</strong>: has been blocked by CORS policy
         </p>
-        <p>
-            <h4>Alterar o header para solucionar</h4>
-            <pre>
-            header("Access-Control-Allow-Origin: *");
-            header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-            header("Content-Type: application/json");
-            </pre>
-        </p>
+    <p>
+        <h4>Alterar o header para solucionar</h4>
+        <pre>
+        header("Access-Control-Allow-Origin: *");
+        header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+        header("Content-Type: application/json");
+        </pre>
+    </p>
         <p>
             <strong>OBS:</strong> clear console
             <br>
@@ -140,46 +145,119 @@
         </p>
     </li>
     <li>
+
+        <hr>
         <h2>7: DevsNotes API (estrutural): Getall</h2>
-        <a href="api/getall.php">getall.php</a>
         <p>
-        $method = strtolower($_SERVER['REQUEST_METHOD']);
-        </p>
-        <p>
-        <a href="http://jsonviewer.stack.hu" target="_blank">http://jsonviewer.stack.hu</a>
+            <strong>O que o projeto precisa fazer?</strong>
+            <br>
+            - Listar as anotações
+
+            <br><br>
+
+            <strong>Quais os endpoints?</strong>
+            <br>
+            - (GET) /api/notes
+
+            <br><br>
+            <a href="api/getall.php">getall.php</a>
         </p>
 
-
-        <pre>
-        Quais os endpoints?
-        - (GET) /api/notes -> /api/getall.php 
-        </pre>
-
         <p>
-        Quais os endpoints?
-        <br>
-        - (METODO) / url (PARÂMETROS) sintaxe:
-        <br>
-        <strong>- (GET) /api/notes -> /api/getall.php </strong>
+            $method = strtolower($_SERVER['REQUEST_METHOD']);
         </p>
+        <p>
+            <a href="http://jsonviewer.stack.hu" target="_blank">http://jsonviewer.stack.hu</a>
+        </p>
+        <p>
+            <a href="https://resttesttest.com/" target="_blank">https://resttesttest.com/</a>
+        </p>
+
     </li>
     <li>
+
+        <hr>
         <h2>8: DevsNotes API (estrutural): Get</h2>
-        <a href="api/get.php">get.php</a>
+        <p>
+            <strong>O que o projeto precisa fazer?</strong>
+            <br>
+            - Pegar infomações de UMA anotação
 
-        <pre>
-        Quais os endpoints?
-        - (GET) /api/note/123 -> /api/get.php?id=123 (id)
-        </pre>
+            <br><br>
+
+            <strong>Quais os endpoints?</strong>
+            <br>
+            - (GET) /api/note/123 
+
+            <br><br>
+            <a href="api/get.php">get.php</a>
+        </p>
+
     </li>
     <li>
-        <a href="mod09-09-DevsNotes-Insert.php">mod09-09-DevsNotes-Insert.php</a>
+
+        <hr>
+        <h2>9: DevsNotes API (estrutural): Insert</h2>
+
+        <p>
+            <strong>O que o projeto precisa fazer?</strong>
+            <br>
+            - Inserir uma anotação nova
+
+            <br><br>
+
+            <strong>Quais os endpoints?</strong>
+            <br>
+            - (POST) /api/note (title, body)
+
+            <br><br>
+            <a href="api/insert.php">insert.php</a>
+
+        </p>
+
     </li>
     <li>
-        <a href="mod09-10-DevsNotes-Update.php">mod09-10-DevsNotes-Update.php</a>
+
+        <hr>
+        <h2>10: DevsNotes API (estrutural): Update</h2>
+
+        <p>
+            <strong>O que o projeto precisa fazer?</strong>
+            <br>
+            - Atualizar uma anotação
+
+            <br><br>
+
+            <strong>Quais os endpoints?</strong>
+            <br>
+            - (PUT) /api/note/123 (id, title, body)
+
+            <br><br>
+            <a href="api/update.php">update.php</a>
+
+        </p>
     </li>
     <li>
-        <a href="mod09-11-DevsNotes-Delete.php">mod09-11-DevsNotes-Delete.php</a>
+
+        <hr>
+        <h2>11: DevsNotes API (estrutural): Delete</h2>
+
+        <p>
+            <strong>O que o projeto precisa fazer?</strong>
+            <br>
+            - Deletar uma anotação
+
+            <br><br>
+
+            <strong>Quais os endpoints?</strong>
+            <br>
+            - (DELETE) /api/note/123 (id)
+
+            <br><br>
+            <a href="api/delete.php">delete.php</a>
+
+        </p>
+
     </li>
 </ul>
 
