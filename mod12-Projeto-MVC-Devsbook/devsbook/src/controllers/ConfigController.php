@@ -268,9 +268,9 @@ class ConfigController extends Controller {
         $y = $y < 0 ? $y / 2 : $y;
 
 
-        echo "<pre>";
-        print_r($file["tmp_name"]);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($file["tmp_name"]);
+        // echo "</pre>";
 
         $finalImage = imagecreatetruecolor($w, $h);
         switch ($file['type']) {
