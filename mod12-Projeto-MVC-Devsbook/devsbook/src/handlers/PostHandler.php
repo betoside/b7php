@@ -227,4 +227,64 @@ class PostHandler {
         return $photos;
     }
 
+
+    public static function delete($id, $loggedUserId) {
+
+        // echo "id: " . $id;
+        // echo "<br>";
+        // echo "loggedUserId: " . $loggedUserId;
+        // exit;
+
+        // deletar
+        // registro do post
+        // registro de likes
+        // os comentarios
+        // se for foto, deletar o arquivo da foto
+
+        // 1. verificar se post existe e se é seu
+        $post = Post::select()
+            ->where('id', $id)
+            ->where('id_user', $loggedUserId)
+        ->get();
+
+        if (count($post) > 0) {
+            $post = $post[0];
+
+            // echo "<pre>";
+            // print_r($post);
+            // echo "</pre>";
+            // exit;
+        
+            // 2. deletar os likes e comments
+            PostLike::delete()->where('id_post', $id)->execute();
+            PostComment::delete()->where('id_post', $id)->execute();
+        
+            // 3. se o post for type === photo, deletar o arquivo
+            if ($post['type'] === 'photo') {
+                // echo 'Dir: ' . __DIR__;
+                // De   Dir: /Applications/MAMP/htdocs/B7Web-PHP/mod12-Projeto-MVC-Devsbook/devsbook/src/handlers
+                // Para Dir: /Applications/MAMP/htdocs/B7Web-PHP/mod12-Projeto-MVC-Devsbook/devsbook/public/media/uploads
+                // exit;
+                $img = __DIR__.'/../../public/media/uploads/'.$post['body'];
+                // echo $img;
+                // exit;
+                if (file_exists($img)) {
+                    unlink($img);
+                    // echo "<br>";
+                    // echo "achou";
+                } else {
+                    echo "<br>";
+                    echo "não achou";
+                }
+                // echo "<br>";
+                // echo "passou batido";
+                // exit;
+            }
+        }
+
+        // 4. deletar o post
+        Post::delete()->where('id', $id)->execute();
+    }
+
+
 }
