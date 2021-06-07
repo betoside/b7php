@@ -1,0 +1,81 @@
+- Users
+-- id
+-- email
+-- senha
+-- name
+-- birthdate
+-- city
+-- work
+-- avatar
+-- cover
+-- token 
+    Depois de fazer o login precisa de uma forma de 
+    identificar que ainda está logado. Não é legal armazenar email
+    e senha do user para verificar uma sessao ou cookie que ele
+    é ele e está logado.
+
+    melhor é um token, ou seja, o user apos fazer o login gera-se
+    um hash aleatorio então pega essa combinação e salva no banco de dados
+    associado com esse usuario
+
+    entao pega esse hash e salve em um cookie/sessao, enfim, em um lugar
+    associado ao navegador para que toda vez q ele entrar em uma pagina
+    e se ela precisar ver se o user esta logado para ter acesso entao pega
+    esse token e verifica se tem algum user com esse token no BD. é uma 
+    forma facil/simples de idetificar sem precisar guardar senha/email em
+    outros locais que nao seja o nosso proprio banco de dados
+
+- UserRelation (relacao entre os usuarios)
+-- id 
+-- user_from
+-- user_to
+
+- Posts
+-- id
+-- type (texto, foto) (outros: video, audio. se quiser adicionar outros tipos)
+-- created_at
+-- body
+--- texto: o proprio texto
+--- video: url do video
+--- audio: url do audio
+-- like_count (pra se livrar de uma consulta, em sistemas grandes)
+
+- PostComments (pode ter varios comentarios)
+-- id
+-- id_post (o comentario tem que estar associado a um post)
+--- me de todos os comentarios do id_post == 123, pronto
+-- id_user (quem fez o comentario)
+-- created_at (quando foi feito)
+-- body
+    
+-PostLikes 
+    (qtos like o post teve e se eu enqto usuario dei like ou nao)
+    (nao precisamos apenas da quantidade de likes, precisamos tb de quem 
+    fez o post ou uma lista de pessoas, por isso essa tabela para armazenar
+    apenas os likes)
+    (em sistemas muitos grandes para nao fazer tantas solicitacoes no BD
+    mantem-se a informacao duplicada criando o LIKE_COUNT na tabela de posts,
+    isso é para facilitar na hora de consultar as informacoes)
+-- id
+-- id_post (qual foi o post que recebeu o like)
+-- id_user (quem foi que deu o like)
+-- created_at
+
+    pode ter varios likes
+
+==============================
+x
+==============================
+
+o sistema so funciona se o user estiver logado
+a primeira coisa é detectar se o user esta logado
+se estiver logado mantem na pagina index, senao manda para pagina login
+
+criar 
+    processo de login
+    processo de cadastro
+
+fazer processo p ver se o user está logado
+criar model especifico para autenticacao
+Auth.php class Auth
+
