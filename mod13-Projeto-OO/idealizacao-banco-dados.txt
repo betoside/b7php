@@ -32,6 +32,7 @@
 
 - Posts
 -- id
+--id_user
 -- type (texto, foto) (outros: video, audio. se quiser adicionar outros tipos)
 -- created_at
 -- body
