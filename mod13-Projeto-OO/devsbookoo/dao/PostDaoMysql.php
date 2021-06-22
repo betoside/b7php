@@ -32,13 +32,33 @@ class PostDaoMysql implements PostDAO {
         return true;
     }
 
+    public function getUserFeed($id_user) {
+        $array = [];
+
+        $sql = $this->pdo->prepare("SELECT * FROM posts 
+        WHERE id_user = :id_user
+        ORDER BY created_at DESC");
+        $sql->bindValue(':id_user', $id_user);
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            $data = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+            $array = $this->_postListToObject($data, $id_user);
+        }
+
+        return $array;
+
+    }
+
     public function getHomeFeed($id_user) {
         $array = [];
         // 3 passos para pegar o feed
         // 1 pegar a lista dos users que eu sigo (tab: userrelations)
             // precisa ter um model que controla essa tabela
         $urDao = new UserRelationDaoMysql($this->pdo);
-        $userList = $urDao->getRelationsFrom($id_user);
+        $userList = $urDao->getFollowing($id_user);
+        $userList[] = $id_user;
         // print_r($userList);
         // exit;
 
@@ -52,6 +72,24 @@ class PostDaoMysql implements PostDAO {
             $data = $sql->fetchAll(PDO::FETCH_ASSOC);
 
             // 3 transformar o resultado em objetos
+            $array = $this->_postListToObject($data, $id_user);
+        }
+
+        return $array;
+
+    }
+
+    public function getPhotosFrom($id_user) {
+        $array = [];
+
+        $sql = $this->pdo->prepare("SELECT * FROM posts
+        WHERE id_user = :id_user AND type = 'photo'
+        ORDER BY created_at DESC");
+        $sql->bindValue(':id_user', $id_user);
+        $sql->execute();
+
+        if ($sql->rowCount() > 0) {
+            $data = $sql->fetchAll(PDO::FETCH_ASSOC);
             $array = $this->_postListToObject($data, $id_user);
         }
 
