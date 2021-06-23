@@ -82,7 +82,7 @@ class UserDaoMysql implements UserDAO {
                 // a partir de agora a gente monta nosso objeto e retorna ele
                 // aqui usar um atalho, criar uma funcao auxiliar para montar e retornar
                 // o objeto 
-                $user = $this->generateUser($data, $full);
+                $user = $this->generateUser($data);
                 return $user;
             }
         }
