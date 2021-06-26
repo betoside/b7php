@@ -156,14 +156,16 @@ require 'partials/menu.php';
 
                 <?php if(count($user->photos) > 0): ?>
                     <?php foreach($user->photos as $key => $item): ?>
+                        <?php if($key < 4): ?>
                         <div class="user-photo-item">
-                            <a href="#modal-<?=$key;?>" rel="modal:open">
-                                <img src="<?=$base;?>/media/uploads/<?=$item;?>" />
+                            <a href="#modal-<?=$key;?>" data-modal-open>
+                                <img src="<?=$base;?>/media/uploads/<?=$item->body;?>" />
                             </a>
                             <div id="modal-<?=$key;?>" style="display:none">
-                                <img src="<?=$base;?>/media/uploads/<?=$item;?>" />
+                                <img src="<?=$base;?>/media/uploads/<?=$item->body;?>" />
                             </div>
                         </div>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 <?php endif; ?>
                                 
@@ -187,7 +189,11 @@ require 'partials/menu.php';
 </div>
 
 </section>
-
+<script>
+    window.onload = function(){
+        var modal = new VanillaModal.default();
+    };
+</script>
 <?php
 require 'partials/footer.php';
 ?>
