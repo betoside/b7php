@@ -10,7 +10,10 @@ $userInfo = $auth->checkToken();
 $activeMenu = 'home';
 
 $postDao = new PostDaoMysql($pdo);
-$feed = $postDao->getHomeFeed($userInfo->id);
+$info = $postDao->getHomeFeed($userInfo->id);
+$feed = $info['feed'];
+$pages = $info['pages'];
+$currentPage = $info['currentPage'];
 // echo "<pre>";
 // print_r($feed);
 // echo "</pre>";
@@ -29,10 +32,24 @@ require 'partials/menu.php';
             <div class="row">
                 <div class="column pr-5">
 
+                    <!-- Páginas: -->
+                    <div class="feed-pagination">
+                        <?php for($q=0;$q<$pages; $q++): ?>
+                            <a class="<?=($q+1==$currentPage)?'active':'';?>" href="<?=$base?>/?p=<?=$q+1;?>"><?=$q+1;?></a>
+                        <?php endfor; ?>
+                    </div>
+
                     <?php require 'partials/feed-editor.php'; ?>
                     <?php foreach($feed as $item): ?>
                         <?php require 'partials/feed-item.php'; ?>
                     <?php endforeach; ?>
+
+                    <!-- Páginas: -->
+                    <div class="feed-pagination">
+                        <?php for($q=0;$q<$pages; $q++): ?>
+                            <a class="<?=($q+1==$currentPage)?'active':'';?>" href="<?=$base?>/?p=<?=$q+1;?>"><?=$q+1;?></a>
+                        <?php endfor; ?>
+                    </div>
 
                 </div>
                 <div class="column side pl-5">

@@ -1,5 +1,5 @@
 @import 'defaults.css';
-@import 'feed-item.css';
+@import 'feed-item.css?1';
 @import 'modal.css';
 
 * {
@@ -243,6 +243,12 @@ header .head-side {
     height:25px;
 }
 .feed-new-file {position: absolute;left: -500px;top: -500px;}
+
+.feed-pagination a {
+    display: inline-block;padding: 7px 10px;border: 1px solid #ccc;margin: 5px;text-decoration: none;border-radius: 3px;
+}
+.feed-pagination a:hover {background-color: #ddd;}
+.feed-pagination a.active {background-color: #fff;}
 
 .banners .box-body {
     margin:0 10px 10px 10px;
