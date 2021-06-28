@@ -71,33 +71,41 @@ class PostDaoMysql implements PostDAO {
 
     }
 
-    public function getUserFeed($id_user) {
-        $array = [];
+    public function getUserFeed($id_user, $page = 1) {
+        $array = ['feed' => []];
+        $perPage = 2;
+
+        $offset = ($page - 1) * $perPage;
 
         $sql = $this->pdo->prepare("SELECT * FROM posts 
         WHERE id_user = :id_user
-        ORDER BY created_at DESC");
+        ORDER BY created_at DESC LIMIT $offset,$perPage");
         $sql->bindValue(':id_user', $id_user);
         $sql->execute();
 
         if ($sql->rowCount() > 0) {
             $data = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-            $array = $this->_postListToObject($data, $id_user);
+            $array['feed'] = $this->_postListToObject($data, $id_user);
         }
 
-        return $array;
+        $sql = $this->pdo->prepare("SELECT COUNT(*) as c FROM posts 
+        WHERE id_user = :id_user");
+        $sql->bindValue(':id_user', $id_user);
+        $sql->execute();
+        $totalData = $sql->fetch();
+        $total = $totalData['c'];
 
+        $array['pages'] = ceil($total / $perPage);
+        $array['currentPage'] = $page;
+
+        return $array;
     }
 
-    public function getHomeFeed($id_user) {
+    public function getHomeFeed($id_user, $page = 1) {
         $array = [];
         $perPage = 2;
 
-        $page = intval(filter_input(INPUT_GET, 'p'));
-        if ($page < 1) {
-            $page = 1;
-        }
         $offset = ($page - 1) * $perPage;
 
         // 3 passos para pegar o feed
